@@ -1,5 +1,5 @@
 const express = require("express");
-const { JSONRPCClient } = require("jsonrpc-client");
+const axios = require("axios");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 
 app.post("/call-supplier", async (req, res) => {
   try {
+    console.log(JSON.stringify(req.body));
+
     const response = await axios.post(`${supplierUrl}/jsonrpc`, {
       jsonrpc: "2.0",
       method: "SupplierMethod",
