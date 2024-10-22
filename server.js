@@ -16,10 +16,9 @@ app.post("/call-supplier", async (req, res) => {
   try {
     console.log(JSON.stringify(req.body));
 
-    const response = await axios.post(`${supplierUrl}/jsonrpc`, {
-      jsonrpc: "2.0",
-      method: "SupplierMethod",
-      params: req.body,
+    const response = await axios.post(`${supplierUrl}/rpc`, {
+      method: "JSONServer.CreateSupplierRequest",
+      params: [req.body],
       id: 1,
     });
 
